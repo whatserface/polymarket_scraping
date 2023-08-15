@@ -14,4 +14,10 @@ class MarketItem(scrapy.Item):
     about = scrapy.Field()
     contract_url = scrapy.Field()
     resolver_url = scrapy.Field()
-    resolution = scrapy.Field()
+    resolution_status = scrapy.Field()
+
+class ResolutionItem(scrapy.Item):
+    status = scrapy.Field()
+    outcome_proposed = scrapy.Field()
+    was_disputed = scrapy.Field()
+    final_outcome = scrapy.Field()
