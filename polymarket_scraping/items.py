@@ -14,7 +14,10 @@ class MarketItem(scrapy.Item):
     about = scrapy.Field()
     contract_url = scrapy.Field()
     resolver_url = scrapy.Field()
-    resolution_status = scrapy.Field()
+    resolution = scrapy.Field()
+
+    def __repr__(self):
+        return repr({"name": self.name, "resolution": self.resolution, "contract_url": self.contract_url, "resolver_url": self.resolver_url})
 
 class ResolutionItem(scrapy.Item):
     status = scrapy.Field()
