@@ -10,6 +10,7 @@ from pprint import pformat
 class MarketItem(scrapy.Item):
     # define the fields for your item here like:
     name = scrapy.Field()
+    url = scrapy.Field()
     graph_points = scrapy.Field()
     about = scrapy.Field()
     outcomes = scrapy.Field()
@@ -18,7 +19,7 @@ class MarketItem(scrapy.Item):
     resolution = scrapy.Field()
 
     def __repr__(self):
-        return pformat({"name": self['name'], "resolution": self['resolution'], "contract_url": self['contract_url'], "resolver_url": self['resolver_url']})
+        return pformat({"name": self['name'], "url": self['url'], "resolution": self['resolution'], "contract_url": self['contract_url'], "resolver_url": self['resolver_url'] })
 
 class ResolutionItem(scrapy.Item):
     status = scrapy.Field()
