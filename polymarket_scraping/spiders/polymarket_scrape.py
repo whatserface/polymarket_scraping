@@ -28,7 +28,7 @@ class PolymarketScrapeSpider(scrapy.Spider):
         self.first_page, self.pages = int(first_page), int(pages)
         
     def start_requests(self):
-        search_page_params = {"_sts": "resolved", "_p": self.first_page, "cardView": 'true'}
+        search_page_params = {"_sts": "active", "_p": self.first_page, "cardView": 'true'}
         start_requests = []
         for _ in range(self.pages):
             start_requests.append(
@@ -105,7 +105,7 @@ class PolymarketScrapeSpider(scrapy.Spider):
         graph_points = response.json()['history']
         if not graph_points:
             logging.warn(f"{market_item['name']} doesn't have a graph")
-            return None
+            return {}
         
         getcontext().prec = 2
         point_str1 = f'p_{market_item["outcomes"][0].lower()}'
